@@ -18,7 +18,7 @@
       <div class="card mb-3">
         <div class="row g-0 align-items-center">
           <div class="col-md-3">
-            <img src={{cart.image}} class="img-fluid" alt="Product">
+            <img src={{cart.imageUrl}} class="img-fluid" alt="Product">
           </div>
           <div class="col-md-9">
             <div class="card-body">
@@ -27,15 +27,14 @@
                 <button class="btn btn-sm btn-light border-0 fs-4" (click)="onDelete(cart)">&times;</button>
               </div>
               <p class="text-muted small mb-1">{{cart.description}}</p>
+              
               <div class="d-flex align-items-center">
-                <select class="form-select form-select-sm w-auto me-3">
-                  <option selected>{{cart.qty}}</option>
-                  <option>{{cart.qty+1}}</option>
-                  <option>{{cart.qty+2}}</option>
-                </select>
+                
+                <input type="number" value={{cart.qty}} class="form-control form-control-sm w-auto me-3" 
+        (change)="handleQtyChange(cart, $event)">
                 <p class="mb-0"><span class="text-muted text-decoration-line-through">{{cart.oldPrice|currency}}</span>
                   <span class="text-danger fw-bold"> {{cart.price|currency}}</span>
-                </p>
+                </p> 
               </div>
             </div>
           </div>
@@ -52,16 +51,14 @@
       <div class="card p-3">
         <h6 class="fw-bold">ORDER SUMMARY</h6>
         <ul class="list-unstyled small mb-2">
-          <li class="d-flex justify-content-between">{{cartList.length}} items <span>$149.00</span></li>
-          <li class="d-flex justify-content-between">Original price <span>$185.00</span></li>
-          <li class="d-flex justify-content-between">Sales Tax <span>$18.48</span></li>
-          <li class="d-flex justify-content-between">Delivery <span>$4.99</span></li>
-          <li class="d-flex justify-content-between text-danger">Sale <span>- $36.00</span></li>
+          <li class="d-flex justify-content-between"><span class="text-danger">{{cartList.length}} <span class="text-secondary">items</span></span> </li>
+          <li class="d-flex justify-content-between">Original price <span>{{total | currency}}</span></li>
+          <li class="d-flex justify-content-between">Delivery <span>{{deliveryFee | currency}}</span></li>
         </ul>
         <hr>
         <div class="d-flex justify-content-between fw-bold mb-3">
           <span>Total</span>
-          <span>$172.47</span>
+          <span>{{totalAmount | currency}}</span>
         </div>
         <p class="small text-muted">From $15.48/month, or 4 payments at 0% interest with Klarna</p>
         
@@ -73,11 +70,11 @@
         <button class="btn btn-outline-dark w-100 mb-3">Pay with GPay</button>
 
         <h6 class="small fw-bold">ACCEPTED PAYMENT METHODS</h6>
-        <div class="d-flex flex-wrap gap-2">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Visa_2021.svg" width="40" alt="">
+        <div class="d-flex flex-wrap gap-4 justify-content-center">
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" width="40" alt="">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Amex_logo.svg" width="40" alt="">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Paypal_2014_logo.png" width="40" alt="">
+          <img src="https://img.icons8.com/?size=512&id=13608&format=png" width="40" alt="">
+          <img src="https://1000logos.net/wp-content/uploads/2017/05/Paypal-Logo.jpg" width="40" alt="">
+          
         </div>
       </div>
     </div>

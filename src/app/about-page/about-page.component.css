@@ -1,0 +1,26 @@
+body {
+      background: #f9fafb;
+      font-family: Arial, sans-serif;
+    }
+    .section {
+      min-height: 100vh; /* each section takes full height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 60px 20px;
+    }
+    .hero {
+      background: linear-gradient(rgba(13, 110, 253, 0.6), rgba(25, 135, 84, 0.6)), url("https://www.securitasinc.com/globalassets/images/2023/11/20/4875b330-d095-4773-98f3-3acd122e6673-19009fdd11aab0b72a8553fed2ba95e82a12d.jpg") center/cover no-repeat;
+      color: white;
+      text-align: center;
+    }
+    .card-custom {
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 15px;
+    }
+    .card-custom:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+    
